@@ -68,18 +68,39 @@
     </style>
 </head>
 <body>
-     
+     <div class="userContainer">
+         <div class="userProfile">
+             <div class="user" id="picContainer">
+                 <img src="tl.png" alt="TechLaunch logo">
+             </div>
+             <div class="user" id="infoContainer">
+                 Name
+                 <p class="name"></p>
+                 Company Name
+                 <p class="companyName"></p>
+                 Address
+                 <p class="address"></p>
+                 Email
+                 <p class="email"></p>
+             </div>
+         </div>
+     </div>
+
+     <p>Invoices</p>
+     <div class="invoiceContainer"></div>
+
     <script>
-        //Fake it til you make it Database
+        // Fake it til you make it Database
         var user = {
-            name: ,
-            companyName: ,
-            address: ,
-            email: ,
-            picture: 
+            name: "Saliyha Webb",
+            companyName: "TechLunch.io" ,
+            address: "7757 West Flagler Street Miami, FL 33144",
+            email: "swebb@techlaunch.io",
+            picture: ""
         }
 
         var invoices = [
+            //invoices [0]
             {
                 inv_id: "0156321",
                 companyName: user.companyName,
@@ -89,6 +110,7 @@
                 cost: 3457.67,
                 paid: 3457.67
             },
+            //invoices [1]
             {
                 inv_id: "0145632",
                 companyName: user.companyName,
@@ -98,6 +120,7 @@
                 cost: 248.00,
                 paid: 150.00
             },
+            //invoices [2]
             {
                 inv_id: "0132110",
                 companyName: user.companyName,
@@ -105,34 +128,64 @@
                 order: "Marketing Coffee Mugs",
                 amount: 160,
                 cost: 414.00,
-                paid: 414.00
-            }
-        
+                paid: 414.00,
+            },
+            {
+                inv_id: "3.1415926535897932384626",
+                companyName: user.companyName,
+                date: "9/7/2017",
+                order: "Pell Contuters",
+                amount: 5,
+                cost: 3457.67,
+                paid: 3457.00
+            },
+            {
+                inv_id: "667",
+                companyName: user.companyName,
+                date: "6/14/2016",
+                order: "Marketing Coffee Pugs",
+                amount: 160,
+                cost: 414.55,
+                paid: 414.00,
+            },
+            {
+                inv_id: "2",
+                companyName: user.companyName,
+                date: "1/5/2017",
+                order: "HD Typewriters",
+                amount: 9000,
+                cost: 8248.87,
+                paid: 8249.00
+            },
         ]
 
         
         //element selectors
+        document.querySelector(".name").textContent = user.name; 
+        document.querySelector(".companyName").textContent = user.companyName;
+        document.querySelector(".address").textContent = user.address; 
+        document.querySelector(".email").textContent = user.email; 
 
-        //adding invoices
+        // adding invoices
         for(var i=0; i<invoices.length; i++){
             document.querySelector('.invoiceContainer').innerHTML += `
             <div class="invoice" id=${invoices[i].inv_id}>
                 Invoice #:   <br/>    
-                <p>${} </p>
+                <p>${invoices[i].inv_id} </p>
                 Company Name:   <br /> 
-                <p>${} </p>
+                <p>${invoices[i].companyName} </p>
                 Date:  <br />
-                <p> ${} </p>
+                <p> ${invoices[i].date} </p>
                 Order:  <br />   
-                <p>${} </p>
+                <p>${invoices[i].order} </p>
                 Amount:   <br />     
-                <p>${} </p>
+                <p>${invoices[i].amount} </p>
                 Cost:       <br />    
-                <p>$${} </p>
+                <p>$${invoices[i].cost} </p>
                 Paid:       <br />   
-                <p> $${} </p>
+                <p> $${invoices[i].paid} </p>
                 Owed:        <br />   
-                <p>$${} </p>
+                <p>$${invoices[i].cost - invoices[i].paid} </p>
             </div>
             `
         }
